@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  get 'users/index'
-  get 'users/show'
-  get 'users/edit'
   devise_for :users
-  # root to: 'homes#top'
-  get 'homes/top', to: 'homes#top', as: '/'
-  # 上記でいいの？
-  resources :users, only: [:index, :show, :edit]
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: 'homes#top'
+  get 'homes/about', to: 'homes#about', as: 'about'
+  get 'users/about', to: 'users#about', as: 'users_about'
+  get 'books/about', to: 'books#about', as: 'books_about'
+  # get 'users/path', to: 'users#about', as: 'users-about'
+  # get 'books/about', to: 'books#about', as: 'books-about'
+
+  resources :users, only: [:index, :show, :edit, :update]
+  resources :books, only: [:new, :create, :index, :show, :edit, :update, :destroy]
 end
