@@ -6,12 +6,13 @@
   <h2>Books</h2>
   <p>Title</p>
   <p>Opinion</p>
-  <% if @book.present? %>
-    <p>Title：<%= @book.title %></p>
-    <p>Opinion：<%= @book.body %></p>
+
+ <% if @book.present? %>
+    <p>Title: <%= @book.title %></p>
+    <p>Opinion: <%= @book.body %></p>
   <% end %>
   <% if @book.present? && @book.user == current_user %>
-    <%= link_to "Edit", book_path(@book), method: :edit %>
+    <%= link_to "Edit", edit_book_path(@book), method: :get%>
     <%= link_to "Destroy", book_path(@book), method: :delete %>
   <% end %>
 </div>
